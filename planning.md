@@ -44,11 +44,11 @@ This document will be used to plan the project. Consists in the logical part of 
 ### Register users and form groups
 
 Group table:
-| IDGroup (Int autofield)(PK) | Name (Varchar) | IDPayment (Int)(FK) |
-|----|------| ----|
-| 1  | HEMT | 1 |
-| 2  | Quimica | 2 |
-| 3 | ... | ... |
+| IDGroup (Int autofield)(PK) | Name (Varchar)
+|----|------|
+| 1  | HEMT |
+| 2  | Quimica |
+| 3 | ... |
 
 User table:
 | IDUser (Int autofield)(PK) | Name (Varchar) | IDGroup (Int)(FK) | Balance (Int) | TotalContribution (Int) | TotalDebt (Int) |
