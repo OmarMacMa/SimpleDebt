@@ -7,6 +7,7 @@ app_name = "Dashboard"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("group/<int:id_group>/", views.group, name="group"),
+    path("group/<str:group_name>", views.group, name="group"),
+    path("upload", views.upload, name="upload")
 
 ]
