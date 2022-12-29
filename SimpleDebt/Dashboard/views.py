@@ -31,6 +31,19 @@ def upload(request):
             payment.id_users_receiving.set(users_receiving)
             payment.amount_per_user = amount / (len(users_receiving) + 1)
             payment.save()
+        payments = Payment.objects.filter(id_group=group)
+        for payment in payments:
+            payment.id_user_paying.total_contribution += payment.amount
+            users_receiving = UsersReceiving.objects.filter(id_payment=payment)
+            for user in users_receiving:
+                user.id_user.total_debt += payment.amount_per_user
+                user.id_user.save()
+            payment.id_user_paying.total_debt += payment.amount_per_user
+            payment.id_user_paying.save()
+        users = User.objects.all()
+        for user in users:
+            user.balance = user.total_contribution - user.total_debt
+            user.save()
         return HttpResponseRedirect(reverse("Dashboard:group", args=(group_name,)))
     except:
         return render(request, 'Dashboard/index.html', {
@@ -39,7 +52,7 @@ def upload(request):
 
 
 def group(request, group_name):
-    group = Group.objects.get(name=group_name)
+    """group = Group.objects.get(name=group_name)
     payments = Payment.objects.filter(id_group=group)
     for payment in payments:
         payment.id_user_paying.total_contribution += payment.amount
@@ -52,7 +65,9 @@ def group(request, group_name):
     users = User.objects.all()
     for user in users:
         user.balance = user.total_contribution - user.total_debt
-        user.save()
+        user.save()"""
+    group = Group.objects.get(name=group_name)
+    users = User.objects.filter(id_group=group)
     return render(request, 'Dashboard/group.html', {
         "group": group,
         "users": users,
