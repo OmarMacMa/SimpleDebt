@@ -1,20 +1,37 @@
-{% comment %} 
-The index view, has a button to upload the csv file
-and a form to input the group name
-{% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload CSV</title>
+    
+    {% if error_message %}
+    <title>{{ error_message }}</title>
+    {% else %}
+    <title>Registered for {{ group_name }}</title>
+    {% endif %}
 </head>
 <body>
-    <h1>Upload CSV</h1>
     {% if error_message %}
-        <h2>{{ error_message }}</h2>
+        <h1>{{ error_message }}</h1>
+        <a href="/register">Would you like to try again?</a>
+        <br>
+        <h2>Or would you like to see your group dashboard?</h2>
+        <form action="/group_name" method="POST">
+            {% csrf_token %}
+            <label for="group_name">Group Name</label>
+            <input type="text" name="group_name" id="group_name">
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <h1>Registered for {{ group_name }}</h1>
+        <a href="/register">Would you like to register another payment?</a>
+        <br>
+        <h2>Or would you like to see your group dashboard?</h2>
+        <a href="/group/{{ group_name }}">Click here to see your group dashboard</a>
     {% endif %}
+    <!--
     <form action="/upload" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="file">Select a CSV file to upload</label>
@@ -50,6 +67,6 @@ and a form to input the group name
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-    </style>
+    </style>-->
 </body>
 </html>
