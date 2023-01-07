@@ -11,4 +11,5 @@ urlpatterns = [
     path("registered", views.registered, name="registered"),
     # path("group_name", views.group_name, name="group_name"),
     path("group/<str:group_name>", views.group, name="group"),
+    path("test", views.test, name="test")
 ]

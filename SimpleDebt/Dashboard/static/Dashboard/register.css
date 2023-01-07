@@ -1,3 +1,48 @@
-.label-tag {
+input[type=text], input[type=date], input[type=number] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 20px;
+    box-sizing: border-box;
+    border: 2px solid #32986f;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+}
 
+center {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=submit] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    border: 2px solid #32986f;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 20px;
+    color: #32986f;
+    margin: 30px auto;
+}
+
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    border: 2px solid #42c691;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 20px;
+    color: #42c691;
+    margin: 30px auto;
 }

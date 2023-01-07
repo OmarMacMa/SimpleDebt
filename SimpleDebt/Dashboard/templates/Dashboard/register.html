@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "Dashboard/style.css" %}">
+    <link rel="stylesheet" href="{% static "Dashboard/register.css" %}">
     <title>Register</title>
 </head>
 <body>
@@ -16,10 +17,9 @@
     <form action="/register" method="POST">
         {% csrf_token %}
         {% for field in form  %}
-            {{ field.label_tag }}<br>
-            {{ field }}<br>
+            <p>{{ field.label_tag }}</p>
+            <center>{{ field }}</center>
         {% endfor %}
-        {% comment %} {{ form.as_p }} {% endcomment %}
         <input type="submit" value="Submit">
     </form>
 </body>

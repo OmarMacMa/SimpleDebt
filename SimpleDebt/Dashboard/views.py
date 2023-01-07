@@ -18,18 +18,23 @@ def determine_category(description):
     for category in categories:
         prompt += f"- {category}\n"
     prompt += f"Description: {description}\n"
-    prompt += "Category: "
+    prompt += "Category:"
     # Response
-    response = openai.Completion.create(
-        model="text-curie-001",
-        prompt=prompt,
-        temperature=0.8,
-        max_tokens=3,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-    )
-    return response.choices[0].text
+    resp = ""
+    for i in range(3):
+        response = openai.Completion.create(
+            model="text-curie-001",
+            prompt=prompt,
+            temperature=0.8,
+            max_tokens=3,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+        )
+        resp = response.choices[0].text
+        if resp in categories:
+            break
+    return resp
 
 
 
@@ -89,3 +94,7 @@ def group(request, group_name):
         "group": group,
         "users": users,
     })
+
+
+def test(request):
+    return render(request, 'Dashboard/registered.html', {})
