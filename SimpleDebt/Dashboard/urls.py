@@ -6,10 +6,9 @@ from . import views
 app_name = "Dashboard"
 
 urlpatterns = [
-    # path("", views.index, name="index"),
+    path("", views.index, name="index"),
     path("register", views.register, name="register"),
-    path("upload", views.upload, name="upload"),
     path("registered", views.registered, name="registered"),
-    path("group_name", views.group_name, name="group_name"),
+    # path("group_name", views.group_name, name="group_name"),
     path("group/<str:group_name>", views.group, name="group"),
 ]
