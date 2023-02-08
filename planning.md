@@ -34,10 +34,7 @@ This document will be used to plan the project. Consists in the logical part of 
     // Possible show the contribution for each payment
     4. Calculate the balance for each user (total contribution - total debt)
     5. Update the database with the balance for each user
-5. Calculate the minimum amount of transactions to pay all debts (Python)
-    1. Do a query to the database to get the balance for each user
-    2. Calculate the minimum amount of transactions to pay all debts
-6. Display the results (Python)
+5. Display the results (Python)
     1. Do a query to the database to get the balance for each user
     2. Display the results in a table
 
@@ -96,17 +93,6 @@ def calculate_balance():
     Calculates the total contribution for each user by summing all the payments made by each user
     Calculates the balance for each user (total contribution - total debt)
     Updates the database with the balance for each user
-    """
-    pass
-```
-
-### Calculate the minimum amount of transactions to pay all debts
-
-```python
-def calculate_minimum_transactions():
-    """
-    Does a query to the database to get the balance for each user
-    Calculates the minimum amount of transactions to pay all debts
     """
     pass
 ```
@@ -175,7 +161,7 @@ The second prototype will be a Django web app that will have the same functional
 
 The database will be SQLite, Django ORM will be used to interact with the database and the front end will be done with Django templates. 
 
-The input still will be a csv file. And the output will be the same as the first prototype, a table with the balance of each user and a table with the transactions needed to pay all debts, but this time the tables will be displayed in the web app.
+The input still will be a csv file. And the output will be the same as the first prototype, a table with the balance of each user, but this time the table will be displayed in the web app.
 
 The web app will have the following pages:
 - Home page (with a button to upload the csv file that fills the database)
@@ -183,11 +169,9 @@ The web app will have the following pages:
 
 ## Third prototype
 
-The third prototype will be a Django web app that will have the same functionalities as the second prototype but with a front end that is more user friendly.
+The third prototype will be a Django web app that will have the same functionalities as the second prototype but with a front end that is more user friendly.The front end will be done in Django templates.
 
-Probably the database will be changed to one hosted in the cloud (probably PostgreSQL) and the front end will be done in Django templates.
-
-The input will be a form that will be filled with the data of one payment. And the output will be the same as the second prototype, a table with the balance of each user and a table with the transactions needed to pay all debts, now with a more user friendly front end.
+The input will be a form that will be filled with the data of one payment. And the output will be the same as the second prototype, a table with the balance of each user now with a more user friendly front end.
 
 The web app will have the following pages:
 - Home page
